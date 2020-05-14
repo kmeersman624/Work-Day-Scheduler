@@ -1,6 +1,31 @@
 var time = moment();
 var currentHour = time.format("H");
 
+//Display date in p id="currentDay" class="lead"
+//updates live date/time
+const date = moment().format("dddd MMMM Do YYYY");
+$("#currentDay").text(date);
+
+$(".time-block").each(function () {
+  const currentHour = parseInt(moment().format("H"));
+  const hour = parseInt($(this).attr("data-hour"));
+
+  if (hour < currentHour) {
+    //add past class
+    //gray is time past
+    $(this).find("textarea").addClass("past");
+  } else if (hour > currentHour) {
+    //add future class
+    //green is future time
+    $(this).find("textarea").addClass("future");
+  } else {
+    //add current class
+    //red is current time
+    $(this).find("textarea").addClass("present");
+  }
+  console.log(hour, currentHour);
+});
+
 var notes = {
   9: "Hello World",
   10: "Test",
@@ -12,54 +37,25 @@ var notes = {
   16: "jkl",
   17: "done",
 };
-//Display date in p id="currentDay" class="lead"
-//updates live date/time
-const date = moment().format("dddd MMMM Do YYYY");
-$("#currentDay").text(date);
 
-$(".time-block").each(function () {
-  const currentHour = parseInt(moment().format("H"));
-  const hour = parseInt($(this).attr("data-hour"));
- 
-  if (hour < currentHour) {
-      //add past class
-      //gray is time past
-      $(this).find("textarea").addClass("past");
-    } else if (hour > currentHour) {
-        //add future class
-        //green is future time
-       $(this).find("textarea").addClass("future");
-    } else {
-        //add current class
-        //red is current time
-       $(this).find("textarea").addClass("present");
-    }
-    console.log(hour, currentHour);
-});
-
-// // loop though textarea to get item from local storage
-// for (var hour in notes) {
-// for (var i = 0; i < notes.length; i++) {
-//     var dataHour = localStorage.getItem(notes[i]);
-// }
 //save button - local storage
- //eventlistener
-$(".saveBtn").click(function() {
-    event.preventDefault();
-    var time = $(this).parent().attr("data-hour");
-    console.log("time is" + time);
-    var value = $(this).siblings(".description").val();
-    console.log(value);
-    localStorage.setItem(time, value);
+//eventlistener
+$(".saveBtn").on("click", function () {
+  event.preventDefault();
+  var time = $(this).parent().attr("data-hour");
+  console.log("time is" + time);
+  var value = $(this).siblings(".description").val();
+  console.log(value);
+  localStorage.setItem(time, value);
 });
+console.log(localStorage.getItem("9"));
 
-$("#hour 9 .description").val(localStorage.getItem("9"));
-$("#hour 10 .description").val(localStorage.getItem("10"));
-$("#hour 11 .description").val(localStorage.getItem("11"));
-$("#hour 12 .description").val(localStorage.getItem("12"));
-$("#hour 13 .description").val(localStorage.getItem("13"));
-$("#hour 14 .description").val(localStorage.getItem("14"));
-$("#hour 15 .description").val(localStorage.getItem("15"));
-$("#hour 16 .description").val(localStorage.getItem("16"));
-$("#hour 17 .description").val(localStorage.getItem("17"));
-
+$("#hour_9 .description").val(localStorage.getItem("9"));
+$("#hour_10 .description").val(localStorage.getItem("10"));
+$("#hour_11 .description").val(localStorage.getItem("11"));
+$("#hour_12 .description").val(localStorage.getItem("12"));
+$("#hour_13 .description").val(localStorage.getItem("13"));
+$("#hour_14 .description").val(localStorage.getItem("14"));
+$("#hour_15 .description").val(localStorage.getItem("15"));
+$("#hour_16 .description").val(localStorage.getItem("16"));
+$("#hour_17 .description").val(localStorage.getItem("17"));
