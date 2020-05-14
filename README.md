@@ -2,7 +2,9 @@
 
 ## Description
 
-This is a work day scheduler that can be used to add in events/appointments for each hour of the workday, 9am-5pm. This app runs in the browser and features dynamically updated HTML and CSS powered by jQuery. It also features a clean and polished user interface and is responsive, ensuring that it adapts to multiple screen sizes.
+This is a work day scheduler that can be used to add in events/appointments for each hour of the workday, 9am-5pm. This app runs in the browser and features dynamically updated HTML and CSS powered by jQuery. It also features a clean and polished user interface and is responsive, ensuring that it adapts to multiple screen sizes. Please see image below of what scheduler looks like.
+
+![](images/workdayscheduler.png
 
 ## Usage
 
